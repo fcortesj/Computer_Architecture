@@ -1,0 +1,29 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/01/DMux8Way.hdl
+// Modified: Felipe Cortes Jaramillo
+
+/**
+ * 8-way demultiplexor:
+ * {a, b, c, d, e, f, g, h} = {in, 0, 0, 0, 0, 0, 0, 0} if sel == 000
+ *                            {0, in, 0, 0, 0, 0, 0, 0} if sel == 001
+ *                            etc.
+ *                            {0, 0, 0, 0, 0, 0, 0, in} if sel == 111
+ */
+
+CHIP DMux8Way {
+    IN in, sel[3];
+    OUT a, b, c, d, e, f, g, h;
+
+    PARTS:
+    //w stands for ways in the first split, sw stand for superior way, second split and dw stand for downway the other option in the second split
+
+    DMux(in=in, sel=sel[0], a=w0, b=w1);
+    DMux(in=w0, sel=sel[1], a=sw0, b=sw1);
+    DMux(in=w1, sel=sel[1], a=dw0, b=dw1);
+    DMux(in=sw0, sel=sel[2], a=a, b=e);
+    DMux(in=sw1, sel=sel[2], a=c, b=g);
+    DMux(in=dw0, sel=sel[2], a=b, b=f);
+    DMux(in=dw1, sel=sel[2], a=d, b=h);
+}
