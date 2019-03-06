@@ -18,14 +18,20 @@ def fix_name(line, op = "//"):
 #Functions to check if is a A command or C command or Label
 def isLabel(line):
     if line.find("(") != -1 and line.find(")") != -1:
-        return True
+        if line[1:-1].strip() != '':
+            return True
+        else:
+            return False
     else:
         return False
 
 #Function that checks if it is a A Command
 def isA(line):
     if line.find('@') != -1:
-        return True
+       if line[1:].strip() != '':
+           return True
+       else:
+           return False
     else:
         return False
 
