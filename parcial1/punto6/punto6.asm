@@ -1,7 +1,7 @@
 	(CHECK)
 	@KBD
 	D=M
-	@letter
+	@R0
 	M=D
 	@128
 	D=D-A
