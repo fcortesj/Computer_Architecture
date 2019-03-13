@@ -1,0 +1,2 @@
+Habría que utilizar un numero que viaja con la misma cantidad de digitos para poder ser incriptado con el 450200
+como un ejemplo 345131
