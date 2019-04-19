@@ -1,0 +1,91 @@
+/** This class defines the month, which has the methods to determinate the number which the month starts
+    and the number of days that it contais
+*/
+class Month {
+    
+    field int month, year;
+    field Array daysOfMonth;
+    field boolean isLeap;
+
+    /** Contructor of the class */
+    constructor Month new(int Dmonth, int Dyear, Array holidays, boolean DisLeap){
+        let month = Dmonth;
+        let year = Dyear;
+        let isLeap = DisLeap;
+        do arrayConstructor(holidays);
+        return this;
+    }
+
+    /** Destructor of the class */
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    /** This method constructs the matrix which is going to contain all the days */
+    method void arrayConstructor(Array holidays){
+        var int daysIterator, numberOfDays, holidaysIterator;
+        var Day currentDay, currentHoliday;
+        var String holidayName;
+        let numberOfDays = numDays();
+        let daysOfMonth = Array.new(numberOfDays);
+        let daysIterator = 0;
+        let holidaysIterator = 0;
+        while(daysIterator < numberOfDays){
+            let currentDay = Day.new((daysIterator+1), month, Calendar.dayOfTheMonth((daysIterator+1),month,year));
+            while(holidaysIterator < 18){
+                let currentHoliday = holidays[holidaysIterator]; 
+                if((currentHoliday.getDayValue() = currentDay.getDayValue()) & (currentHoliday.getMonthValue() = currentDay.getMonthValue())){
+                    let holidayName = currentHoliday.getDayName();
+                    do currentDay.setHoliday(holidayName);
+                }
+                let holidaysIterator = holidaysIterator + 1;
+            }
+            let holidaysIterator = 0;
+            let daysOfMonth[daysIterator] = currentDay;
+            let daysIterator = daysIterator + 1;
+        }
+        return;
+    }
+
+    /** This method gets the number of days contained in the month */
+    method int numDays(){
+        var int result;
+        if((month = 1) | (month = 3) | (month = 5) | (month = 7) | (month = 8) | (month = 10) | (month = 12)){
+            let result = 31;
+        }
+        if((month = 4) | (month = 6) | (month = 9) | (month = 11)){
+            let result = 30;
+        }
+        if(month = 2){
+            if(isLeap){
+                let result = 29;
+            }else{
+                let result = 28;
+            }
+        }
+        return result;
+    }
+
+    /** This method prints all the days **/
+    method void printDays(){
+        var int iterator, numberDays;
+        var Day currentDay;
+        let iterator = 0;
+        let numberDays = numDays();
+        while(iterator < numberDays){
+            let currentDay = daysOfMonth[iterator];
+            if(currentDay.getHolidayValue()){
+                do Output.printString(currentDay.getDayName());
+                do Output.println();
+            }
+            let iterator = iterator + 1;
+        }
+        return;
+    }
+
+    /** This method return the array of the days conatined in the month */
+    method Array getArray(){
+        return daysOfMonth;
+    }
+}

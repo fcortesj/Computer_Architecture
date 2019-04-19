@@ -1,0 +1,11 @@
+/**
+    This module has auxiliary operators
+*/
+class AuxOperator{
+    /** This function operates the module between two numbers */
+    function int module(int a, int b){
+        var int result;
+        let result = a - (b*(a/b));
+        return result;
+    }
+}

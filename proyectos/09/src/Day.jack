@@ -1,0 +1,58 @@
+/** This class contains the structure of each day contained in the calendar. Whick is going to tell if it is a holiday or not 
+*/
+class Day{
+
+    field boolean isHoliday;
+    field int day, month, dayWeek;
+    field String dayName; 
+
+    /** Constructor of the class */
+    constructor Day new(int Dday, int Dmonth, int DdayWeek){
+        let day = Dday;
+        let month = Dmonth;
+        let dayWeek = DdayWeek;
+        return this;
+    }
+
+    /** Destructor of the class */
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    /** This method returns the day value */
+    method int getDayValue(){
+        return day;
+    }
+
+    /** This method return the day of the week */
+    method int getDayWeekValue(){
+        return dayWeek;
+    }
+
+    /** This method return the month of the day */
+    method int getMonthValue(){
+        return month;
+    }
+
+    /** This method returns the holiday name */
+    method String getDayName(){
+        return dayName;
+    }
+
+    /** This method returns a bollean which says if the day is a holiday or not */
+    method boolean getHolidayValue(){
+        return isHoliday;
+    }
+
+    method void setHoliday(String Ddayname){
+        let dayName = Ddayname;
+        let isHoliday = true;
+        return;
+    }
+
+    /** Function indicates if the day is holiday and if it is movable or not */
+    // function void checkHoliDayMovable(Day day){
+
+    // }   
+}

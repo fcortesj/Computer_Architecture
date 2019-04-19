@@ -1,0 +1,159 @@
+/** This class draws on the screen the Calendar. So everyday and holiday should be drawn on the screen */
+class Canvas {
+
+    field Month monthToDraw;
+
+    /** Constructor of the canvas */
+    constructor Canvas new(Month dMonth){
+        let monthToDraw = dMonth;
+        return this;
+    }
+
+    /** Destructor of the class */
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    /** This method draws the frame of the calendar */
+    method void drawFrame(){
+        //Column lines
+        do Screen.drawLine(73, 0, 73, 255);
+        do Screen.drawLine(146, 0, 146, 255);
+        do Screen.drawLine(219, 0, 219, 255);
+        do Screen.drawLine(292, 0, 292, 255);
+        do Screen.drawLine(365, 0, 365, 255);
+        do Screen.drawLine(438, 0, 438, 255);
+        //Row lines
+        do Screen.drawLine(0, 46, 511, 46);
+        do Screen.drawLine(0, 82, 511, 82);
+        do Screen.drawLine(0, 118, 511, 118);
+        do Screen.drawLine(0, 154, 511, 154);
+        do Screen.drawLine(0, 190, 511, 190);
+        do Screen.drawLine(0, 226, 511, 226);
+
+        //Draw the letters of the week
+        do Output.moveCursor(2, 4);
+        do Output.printString("D");
+        do Output.moveCursor(2, 14);
+        do Output.printString("L");
+        do Output.moveCursor(2, 23);
+        do Output.printString("M");
+        do Output.moveCursor(2, 32);
+        do Output.printString("W");
+        do Output.moveCursor(2, 41);
+        do Output.printString("J");
+        do Output.moveCursor(2, 50);
+        do Output.printString("V");
+        do Output.moveCursor(2, 59);
+        do Output.printString("S");
+        
+        return;
+    }
+
+    /** This method draws the days contained in the Array of Month */
+    method void drawDays(){
+        var int nDays, iterator, nRow, nColumn, xValue, yValue;
+        var Array daysOfMonth;
+        var Day currentDay;
+        let nDays = monthToDraw.numDays();
+        let daysOfMonth = monthToDraw.getArray();
+        let iterator = 0;
+        let nRow = 1;
+        let nColumn = 0;
+        let xValue = 0;
+        let yValue = 5;
+
+        while(iterator < nDays){
+            let currentDay = daysOfMonth[iterator];
+            let nColumn = currentDay.getDayWeekValue();
+            //Fix the day value to get into the created matrix
+            if(nColumn > 0){
+                let nColumn = nColumn - 1;
+            }
+            else{
+                let nColumn = 6;
+            }
+            //Lets draw each day
+            //Sunday
+            if(nColumn = 0){
+                let xValue = 4;
+                do Output.moveCursor(yValue,xValue);
+                do Output.printInt(currentDay.getDayValue());
+                do drawHoliday(currentDay, xValue, yValue);
+            }
+            //Monday
+            if(nColumn = 1){
+                let xValue = 13;
+                do Output.moveCursor(yValue,xValue);
+                do Output.printInt(currentDay.getDayValue());
+                do drawHoliday(currentDay, xValue, yValue);
+            }
+            //Tuesday
+            if(nColumn = 2){
+                let xValue = 22;
+                do Output.moveCursor(yValue,xValue);
+                do Output.printInt(currentDay.getDayValue());
+                do drawHoliday(currentDay, xValue, yValue);
+            }
+            //Wednesday
+            if(nColumn = 3){
+                let xValue = 31;
+                do Output.moveCursor(yValue,xValue);
+                do Output.printInt(currentDay.getDayValue());
+                do drawHoliday(currentDay, xValue, yValue);
+            }
+            //Thursday
+            if(nColumn = 4){
+                let xValue = 40;
+                do Output.moveCursor(yValue,xValue);
+                do Output.printInt(currentDay.getDayValue());
+                do drawHoliday(currentDay, xValue, yValue);
+            }
+            //Friday
+            if(nColumn = 5){
+                let xValue = 50;
+                do Output.moveCursor(yValue,xValue);
+                do Output.printInt(currentDay.getDayValue());
+                do drawHoliday(currentDay, xValue, yValue);
+            }
+            //Saturday
+            if(nColumn = 6){
+                let xValue = 59;
+                do Output.moveCursor(yValue,xValue);
+                do Output.printInt(currentDay.getDayValue());
+                do drawHoliday(currentDay, xValue, yValue);
+                //If it is a Saturday it means we are going to pass the next column if the next column is the 5th it has an special case
+                if(nRow = 4){
+                    let nRow = nRow + 1;
+                    let yValue = yValue + 4;
+                }else{
+                    let nRow = nRow + 1;
+                    let yValue = yValue + 3;
+                }
+            }
+            //Iterate the day
+            let iterator = iterator + 1;
+        }
+        return;
+    }
+
+    /** This function checks if the day passed is holiday and draw it below the number in the calendar */
+    method void drawHoliday(Day currentDay, int xValue, int yValue){
+        var boolean isHoliday;
+        var String holidayName;
+        var int modifiedX, modifiedY;
+        let isHoliday = currentDay.getHolidayValue();
+        if(isHoliday){
+            let holidayName = currentDay.getDayName();
+            let modifiedX = xValue - 4; 
+            let modifiedY = yValue + 1; 
+            do Output.moveCursor(modifiedY, modifiedX);
+            do Output.printString(holidayName);
+        }
+        return;
+    }
+
+
+
+}
