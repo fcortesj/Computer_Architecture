@@ -23,7 +23,7 @@ class Main {
         do Main.routine();
         //Now we make the loop
          while(~(currentChar = 84)){
-            let currentChar = Keyboard.keyPressed();
+            let currentChar = Keyboard.readChar();
             if (currentChar = 79){
                 do Screen.clearScreen();
                 do Main.disposeObjects();
