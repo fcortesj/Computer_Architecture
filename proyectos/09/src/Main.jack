@@ -79,7 +79,7 @@ class Main {
     function void routine(){
         let c1 = Calendar.new(year);
         let holidays = Calendar.getHolidays(year);
-        let m1 = Month.new(month,year,holidays,false);
+        let m1 = Month.new(month,year,holidays,c1.getLeap());
         do Main.checkParameters();
         let canvas = Canvas.new(m1);
         do canvas.drawFrame();
