@@ -18,6 +18,8 @@ class Month {
 
     /** Destructor of the class */
     method void dispose(){
+        // do disposeArray();
+        do Memory.deAlloc(daysOfMonth);
         do Memory.deAlloc(this);
         return;
     }
@@ -83,6 +85,21 @@ class Month {
         }
         return;
     }
+
+    // /** Dispose array */
+    // method void disposeArray(){
+    //     var int daysIterator, totalDays;
+    //     var Day currentDay;
+    //     let daysIterator = 0;
+    //     let totalDays = numDays();
+    //     do Output.printInt(totalDays);
+    //     while(daysIterator < totalDays){
+    //         let currentDay = daysOfMonth[totalDays];
+    //         do Memory.deAlloc(currentDay);
+    //         let daysIterator = daysIterator + 1;
+    //     }
+    //     return;
+    // }
 
     /** This method return the array of the days conatined in the month */
     method Array getArray(){

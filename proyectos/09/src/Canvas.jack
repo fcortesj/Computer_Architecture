@@ -11,6 +11,7 @@ class Canvas {
 
     /** Destructor of the class */
     method void dispose(){
+        do Memory.deAlloc(monthToDraw);
         do Memory.deAlloc(this);
         return;
     }

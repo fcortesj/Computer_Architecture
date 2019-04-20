@@ -16,6 +16,7 @@ class Day{
 
     /** Destructor of the class */
     method void dispose(){
+        do Memory.deAlloc(dayName);
         do Memory.deAlloc(this);
         return;
     }

@@ -69,6 +69,7 @@ class Main {
         }
         //Exit
         do Screen.clearScreen();
+        do Main.disposeObjects();
         //Set cursor to origin
         do Output.moveCursor(0,0);
         do Output.printString("El programa ha sido finalizado exitosamente, que tenga un feliz dia :)!");
