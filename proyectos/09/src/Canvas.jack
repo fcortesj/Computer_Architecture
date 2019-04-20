@@ -48,6 +48,10 @@ class Canvas {
         do Output.printString("V");
         do Output.moveCursor(2, 59);
         do Output.printString("S");
+
+        //Then we draw the operations
+        do Output.moveCursor(22,0);
+        do Output.printString("Arriba,abajo->C.Anno|Lados->C. Dia|O->N.Fecha|T->Fin");
         
         return;
     }
