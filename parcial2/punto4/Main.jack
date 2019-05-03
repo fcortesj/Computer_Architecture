@@ -1,0 +1,33 @@
+class Main{
+
+    static Array numbers;
+
+    function void main(){
+        var int contador, currentInt, totalNumbers, prom, result;
+        let totalNumbers = Keyboard.readInt(" Ingrese total de numeros ");
+        while((totalNumbers < 0) | (totalNumbers = 0)){
+            let totalNumbers = Keyboard.readInt(" Numero invalido. Ingrese total de numeros ");
+        } 
+        let numbers = Array.new(totalNumbers);
+        let contador = 0;
+        let prom = 0;
+        let result = 0;
+        while( contador<totalNumbers ){
+            let currentInt = Keyboard.readInt(" Ingrese numero ");
+            let numbers[contador] = currentInt;
+            let prom = prom + numbers[contador];
+            let contador = contador + 1;
+        }
+        let prom = prom/totalNumbers;
+        let contador = 0;
+        do Screen.clearScreen();
+        do Output.moveCursor(0,0);
+        while ( contador<totalNumbers ){
+            let result = numbers[contador] - prom;
+            do Output.printInt(result);
+            do Output.println();
+            let contador = contador + 1;
+        }
+        return;
+    }
+}
