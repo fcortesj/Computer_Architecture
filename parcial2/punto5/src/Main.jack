@@ -1,0 +1,166 @@
+class Main {
+
+    static int year, month, day;
+    static Calendar c1;
+    static Month m1;
+    static Canvas canvas;
+    static Array holidays;
+    
+
+    function void main(){
+        var char currentChar;
+        let currentChar = 0;
+
+        //t -> 84
+        //up -> 131
+        //left -> 130
+        //down -> 133
+        //right -> 132
+        //o -> 79
+
+        //Start of the program
+        do Main.exactDay();
+        do Main.routine();
+        //Now we make the loop
+         while(~(currentChar = 84)){
+            let currentChar = Keyboard.readChar();
+            if (currentChar = 79){
+                do Screen.clearScreen();
+                do Main.disposeObjects();
+                do Main.exactDay();
+                do Main.routine();
+            }
+            //UP
+            if (currentChar = 131){
+                do Screen.clearScreen();
+                do Main.disposeObjects();
+                let year = year - 1;
+                do Main.routine();
+            }
+            //DOWN
+            if (currentChar = 133){
+                do Screen.clearScreen();
+                do Main.disposeObjects();
+                let year = year + 1;
+                do Main.routine();
+            }
+            //LEFT
+            if (currentChar = 130){
+                do Screen.clearScreen();
+                do Main.disposeObjects();
+                let month = month - 1;
+                if(month < 1){
+                    let month = 12;
+                    let year = year - 1;
+                }
+                do Main.routine();
+            }
+            //RIGHT
+            if (currentChar = 132){
+                do Screen.clearScreen();
+                do Main.disposeObjects();
+                let month = month + 1;
+                if(month > 12){
+                    let month = 1;
+                    let year = year + 1;
+                }
+                do Main.routine();
+            }
+        }
+        //Exit
+        do Screen.clearScreen();
+        do Main.disposeObjects();
+        //Set cursor to origin
+        do Output.moveCursor(0,0);
+        do Output.printString("El programa ha sido finalizado exitosamente, que tenga un feliz dia :)!");
+        return;
+    }
+
+    /** This function is the draw routine */
+    function void routine(){
+        let c1 = Calendar.new(year);
+        let holidays = Calendar.getHolidays(year);
+        let m1 = Month.new(month,year,holidays,c1.getLeap());
+        do Main.checkParameters();
+        let canvas = Canvas.new(m1);
+        do canvas.drawFrame();
+        do canvas.drawDays();
+        return;
+    }
+
+    /** This function ask a date */
+    function void exactDay(){
+        do Output.moveCursor(0,0);
+        do Output.printString("Bienvenido al calendario, porfavor ingresar los siguentes datos:");
+        do Output.println();
+        let year = Keyboard.readInt("Coloque el anno que desea:  (Nota: Debe estar entre 1583 y 2299) ");
+        do Screen.clearScreen();
+        let month = Keyboard.readInt("Ahora coloque el mes que desea: ");
+        do Screen.clearScreen();
+        let day = Keyboard.readInt("Ahora coloque el dia que desea: ");
+        do Screen.clearScreen();
+        return;
+    }
+
+    /** This function checks if all the parameters are correct to draw */
+    function void checkParameters(){
+        //First we check the year
+        if (year > 2299 | year < 1583){
+            do Screen.clearScreen();
+            do Output.moveCursor(0,0);
+            do Output.printString("La fecha que intento colocar es erronea o no se ha podido calcular exitosamente");
+            do Sys.halt();
+        }
+        //Then we check the month
+        if (month > 12 | month < 1){
+            do Screen.clearScreen();
+            do Output.moveCursor(0,0);
+            do Output.printString("La fecha que intento colocar es erronea o no se ha podido calcular exitosamente");
+            do Sys.halt();
+        }
+        //Finally we check the day
+        if((month = 1) | (month = 3) | (month = 5) | (month = 7) | (month = 8) | (month = 10) | (month = 12)){
+            if(day > 31 | day < 1){
+                do Screen.clearScreen();
+                do Output.moveCursor(0,0);
+                do Output.printString("La fecha que intento colocar es erronea o no se ha podido calcular exitosamente");
+                do Sys.halt();
+            }
+        }
+        if((month = 4) | (month = 6) | (month = 9) | (month = 11)){
+            if(day > 30 | day < 1){
+                do Screen.clearScreen();
+                do Output.moveCursor(0,0);
+                do Output.printString("La fecha que intento colocar es erronea o no se ha podido calcular exitosamente");
+                do Sys.halt();
+            }
+        }
+        if(month = 2){
+            if(c1.getLeap()){
+                if(day > 29 | day < 1){
+                    do Screen.clearScreen();
+                    do Output.moveCursor(0,0);
+                    do Output.printString("La fecha que intento colocar es erronea o no se ha podido calcular exitosamente");
+                    do Sys.halt();
+                }
+            }else{
+                if(day > 28 | day < 1){
+                    do Screen.clearScreen();
+                    do Output.moveCursor(0,0);
+                    do Output.printString("La fecha que intento colocar es erronea o no se ha podido calcular exitosamente");
+                    do Sys.halt();
+                }
+            }
+        }
+        return;
+    }
+
+    /** This function disposes the objects */
+    function void disposeObjects(){
+        do canvas.dispose();
+        do m1.dispose();
+        do holidays.dispose();
+        do c1.dispose();
+        return;
+    }
+}
