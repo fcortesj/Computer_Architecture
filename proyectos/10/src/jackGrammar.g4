@@ -7,15 +7,15 @@ grammar jackGrammar;
 
 // Parser Rules
 
-classN         : 'class' classNameN '{' classVarDecN* subrutineDecN* '}';
+classN         : 'class' classNameN '{' classVarDecN* subroutineDecN* '}';
 classVarDecN   : ('static'|'field') typeN varNameN (',' varNameN)* ';';
 typeN          : 'int'|'char'|'boolean'|classNameN ;
-subrutineDecN  : ('constructor'|'function'|'method') ('void'|typeN) subrutineNameN '(' parameterListN ')' subrutineBodyN ;
+subroutineDecN  : ('constructor'|'function'|'method') ('void'|typeN) subroutineNameN '(' parameterListN ')' subroutineBodyN ;
 parameterListN : ((typeN varNameN) (',' typeN varNameN)*)? ;
-subrutineBodyN : '{' varDecN* statementsN '}' ;
+subroutineBodyN : '{' varDecN* statementsN '}' ;
 varDecN        : 'var' typeN varNameN (',' varNameN)* ';' ;
 classNameN     : IDENTIFIER ;
-subrutineNameN : IDENTIFIER ;
+subroutineNameN : IDENTIFIER ;
 varNameN       : IDENTIFIER ;
 
 //Statements
@@ -25,14 +25,14 @@ statementN       : letStatementN|ifStatementN|whileStatementN|doStatementN|retur
 letStatementN    : 'let' varNameN ('[' expressionN ']')? '=' expressionN ';' ;
 ifStatementN     : 'if' '(' expressionN ')' '{' statementsN '}' ('else' '{' statementsN '}')? ;
 whileStatementN  : 'while' '(' expressionN ')' '{' statementsN '}';
-doStatementN     : 'do' subrutineCallN ';' ;
+doStatementN     : 'do' subroutineCallN ';' ;
 returnStatementN : 'return' expressionN? ';' ;
 
 //Expressions
 
 expressionN      : termN(opN termN)* ;
-termN            : INTEGERCONSTANT|STRINGCONSTANT|keywordConstantN|varNameN|varNameN '[' expressionN ']'|subrutineCallN|'(' expressionN ')'|unaryOpN termN ;
-subrutineCallN   : subrutineNameN '(' expressionListN ')'|(classNameN|varNameN) '.' subrutineNameN '(' expressionListN ')' ;
+termN            : INTEGERCONSTANT|STRINGCONSTANT|keywordConstantN|varNameN|varNameN '[' expressionN ']'|subroutineCallN|'(' expressionN ')'|unaryOpN termN ;
+subroutineCallN   : subroutineNameN '(' expressionListN ')'|(classNameN|varNameN) '.' subroutineNameN '(' expressionListN ')' ;
 expressionListN  : (expressionN(',' expressionN)*)? ;
 opN              : '+'|'-'|'*'|'/'|'&'|'|'|'<'|'>'|'=' ;
 unaryOpN         : '-'|'~' ;

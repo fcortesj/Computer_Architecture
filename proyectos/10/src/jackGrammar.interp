@@ -100,12 +100,12 @@ rule names:
 classN
 classVarDecN
 typeN
-subrutineDecN
+subroutineDecN
 parameterListN
-subrutineBodyN
+subroutineBodyN
 varDecN
 classNameN
-subrutineNameN
+subroutineNameN
 varNameN
 statementsN
 statementN
@@ -116,7 +116,7 @@ doStatementN
 returnStatementN
 expressionN
 termN
-subrutineCallN
+subroutineCallN
 expressionListN
 opN
 unaryOpN

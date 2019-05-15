@@ -153,12 +153,12 @@ class jackGrammarParser ( Parser ):
     RULE_classN = 0
     RULE_classVarDecN = 1
     RULE_typeN = 2
-    RULE_subrutineDecN = 3
+    RULE_subroutineDecN = 3
     RULE_parameterListN = 4
-    RULE_subrutineBodyN = 5
+    RULE_subroutineBodyN = 5
     RULE_varDecN = 6
     RULE_classNameN = 7
-    RULE_subrutineNameN = 8
+    RULE_subroutineNameN = 8
     RULE_varNameN = 9
     RULE_statementsN = 10
     RULE_statementN = 11
@@ -169,18 +169,18 @@ class jackGrammarParser ( Parser ):
     RULE_returnStatementN = 16
     RULE_expressionN = 17
     RULE_termN = 18
-    RULE_subrutineCallN = 19
+    RULE_subroutineCallN = 19
     RULE_expressionListN = 20
     RULE_opN = 21
     RULE_unaryOpN = 22
     RULE_keywordConstantN = 23
 
-    ruleNames =  [ "classN", "classVarDecN", "typeN", "subrutineDecN", "parameterListN", 
-                   "subrutineBodyN", "varDecN", "classNameN", "subrutineNameN", 
-                   "varNameN", "statementsN", "statementN", "letStatementN", 
-                   "ifStatementN", "whileStatementN", "doStatementN", "returnStatementN", 
-                   "expressionN", "termN", "subrutineCallN", "expressionListN", 
-                   "opN", "unaryOpN", "keywordConstantN" ]
+    ruleNames =  [ "classN", "classVarDecN", "typeN", "subroutineDecN", 
+                   "parameterListN", "subroutineBodyN", "varDecN", "classNameN", 
+                   "subroutineNameN", "varNameN", "statementsN", "statementN", 
+                   "letStatementN", "ifStatementN", "whileStatementN", "doStatementN", 
+                   "returnStatementN", "expressionN", "termN", "subroutineCallN", 
+                   "expressionListN", "opN", "unaryOpN", "keywordConstantN" ]
 
     EOF = Token.EOF
     T__0=1
@@ -256,11 +256,11 @@ class jackGrammarParser ( Parser ):
                 return self.getTypedRuleContext(jackGrammarParser.ClassVarDecNContext,i)
 
 
-        def subrutineDecN(self, i:int=None):
+        def subroutineDecN(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(jackGrammarParser.SubrutineDecNContext)
+                return self.getTypedRuleContexts(jackGrammarParser.SubroutineDecNContext)
             else:
-                return self.getTypedRuleContext(jackGrammarParser.SubrutineDecNContext,i)
+                return self.getTypedRuleContext(jackGrammarParser.SubroutineDecNContext,i)
 
 
         def getRuleIndex(self):
@@ -305,7 +305,7 @@ class jackGrammarParser ( Parser ):
             _la = self._input.LA(1)
             while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << jackGrammarParser.T__10) | (1 << jackGrammarParser.T__11) | (1 << jackGrammarParser.T__12))) != 0):
                 self.state = 57
-                self.subrutineDecN()
+                self.subroutineDecN()
                 self.state = 62
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
@@ -457,22 +457,22 @@ class jackGrammarParser ( Parser ):
         return localctx
 
 
-    class SubrutineDecNContext(ParserRuleContext):
+    class SubroutineDecNContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def subrutineNameN(self):
-            return self.getTypedRuleContext(jackGrammarParser.SubrutineNameNContext,0)
+        def subroutineNameN(self):
+            return self.getTypedRuleContext(jackGrammarParser.SubroutineNameNContext,0)
 
 
         def parameterListN(self):
             return self.getTypedRuleContext(jackGrammarParser.ParameterListNContext,0)
 
 
-        def subrutineBodyN(self):
-            return self.getTypedRuleContext(jackGrammarParser.SubrutineBodyNContext,0)
+        def subroutineBodyN(self):
+            return self.getTypedRuleContext(jackGrammarParser.SubroutineBodyNContext,0)
 
 
         def typeN(self):
@@ -480,23 +480,23 @@ class jackGrammarParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return jackGrammarParser.RULE_subrutineDecN
+            return jackGrammarParser.RULE_subroutineDecN
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSubrutineDecN" ):
-                listener.enterSubrutineDecN(self)
+            if hasattr( listener, "enterSubroutineDecN" ):
+                listener.enterSubroutineDecN(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSubrutineDecN" ):
-                listener.exitSubrutineDecN(self)
+            if hasattr( listener, "exitSubroutineDecN" ):
+                listener.exitSubroutineDecN(self)
 
 
 
 
-    def subrutineDecN(self):
+    def subroutineDecN(self):
 
-        localctx = jackGrammarParser.SubrutineDecNContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 6, self.RULE_subrutineDecN)
+        localctx = jackGrammarParser.SubroutineDecNContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 6, self.RULE_subroutineDecN)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
@@ -522,7 +522,7 @@ class jackGrammarParser ( Parser ):
                 raise NoViableAltException(self)
 
             self.state = 88
-            self.subrutineNameN()
+            self.subroutineNameN()
             self.state = 89
             self.match(jackGrammarParser.T__14)
             self.state = 90
@@ -530,7 +530,7 @@ class jackGrammarParser ( Parser ):
             self.state = 91
             self.match(jackGrammarParser.T__15)
             self.state = 92
-            self.subrutineBodyN()
+            self.subroutineBodyN()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -614,7 +614,7 @@ class jackGrammarParser ( Parser ):
         return localctx
 
 
-    class SubrutineBodyNContext(ParserRuleContext):
+    class SubroutineBodyNContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -632,23 +632,23 @@ class jackGrammarParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return jackGrammarParser.RULE_subrutineBodyN
+            return jackGrammarParser.RULE_subroutineBodyN
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSubrutineBodyN" ):
-                listener.enterSubrutineBodyN(self)
+            if hasattr( listener, "enterSubroutineBodyN" ):
+                listener.enterSubroutineBodyN(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSubrutineBodyN" ):
-                listener.exitSubrutineBodyN(self)
+            if hasattr( listener, "exitSubroutineBodyN" ):
+                listener.exitSubroutineBodyN(self)
 
 
 
 
-    def subrutineBodyN(self):
+    def subroutineBodyN(self):
 
-        localctx = jackGrammarParser.SubrutineBodyNContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 10, self.RULE_subrutineBodyN)
+        localctx = jackGrammarParser.SubroutineBodyNContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 10, self.RULE_subroutineBodyN)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
@@ -784,7 +784,7 @@ class jackGrammarParser ( Parser ):
         return localctx
 
 
-    class SubrutineNameNContext(ParserRuleContext):
+    class SubroutineNameNContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -794,23 +794,23 @@ class jackGrammarParser ( Parser ):
             return self.getToken(jackGrammarParser.IDENTIFIER, 0)
 
         def getRuleIndex(self):
-            return jackGrammarParser.RULE_subrutineNameN
+            return jackGrammarParser.RULE_subroutineNameN
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSubrutineNameN" ):
-                listener.enterSubrutineNameN(self)
+            if hasattr( listener, "enterSubroutineNameN" ):
+                listener.enterSubroutineNameN(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSubrutineNameN" ):
-                listener.exitSubrutineNameN(self)
+            if hasattr( listener, "exitSubroutineNameN" ):
+                listener.exitSubroutineNameN(self)
 
 
 
 
-    def subrutineNameN(self):
+    def subroutineNameN(self):
 
-        localctx = jackGrammarParser.SubrutineNameNContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 16, self.RULE_subrutineNameN)
+        localctx = jackGrammarParser.SubroutineNameNContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 16, self.RULE_subroutineNameN)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 132
@@ -1209,8 +1209,8 @@ class jackGrammarParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def subrutineCallN(self):
-            return self.getTypedRuleContext(jackGrammarParser.SubrutineCallNContext,0)
+        def subroutineCallN(self):
+            return self.getTypedRuleContext(jackGrammarParser.SubroutineCallNContext,0)
 
 
         def getRuleIndex(self):
@@ -1236,7 +1236,7 @@ class jackGrammarParser ( Parser ):
             self.state = 183
             self.match(jackGrammarParser.T__24)
             self.state = 184
-            self.subrutineCallN()
+            self.subroutineCallN()
             self.state = 185
             self.match(jackGrammarParser.T__6)
         except RecognitionException as re:
@@ -1388,8 +1388,8 @@ class jackGrammarParser ( Parser ):
             return self.getTypedRuleContext(jackGrammarParser.ExpressionNContext,0)
 
 
-        def subrutineCallN(self):
-            return self.getTypedRuleContext(jackGrammarParser.SubrutineCallNContext,0)
+        def subroutineCallN(self):
+            return self.getTypedRuleContext(jackGrammarParser.SubroutineCallNContext,0)
 
 
         def unaryOpN(self):
@@ -1461,7 +1461,7 @@ class jackGrammarParser ( Parser ):
             elif la_ == 6:
                 self.enterOuterAlt(localctx, 6)
                 self.state = 211
-                self.subrutineCallN()
+                self.subroutineCallN()
                 pass
 
             elif la_ == 7:
@@ -1492,14 +1492,14 @@ class jackGrammarParser ( Parser ):
         return localctx
 
 
-    class SubrutineCallNContext(ParserRuleContext):
+    class SubroutineCallNContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def subrutineNameN(self):
-            return self.getTypedRuleContext(jackGrammarParser.SubrutineNameNContext,0)
+        def subroutineNameN(self):
+            return self.getTypedRuleContext(jackGrammarParser.SubroutineNameNContext,0)
 
 
         def expressionListN(self):
@@ -1515,23 +1515,23 @@ class jackGrammarParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return jackGrammarParser.RULE_subrutineCallN
+            return jackGrammarParser.RULE_subroutineCallN
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSubrutineCallN" ):
-                listener.enterSubrutineCallN(self)
+            if hasattr( listener, "enterSubroutineCallN" ):
+                listener.enterSubroutineCallN(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSubrutineCallN" ):
-                listener.exitSubrutineCallN(self)
+            if hasattr( listener, "exitSubroutineCallN" ):
+                listener.exitSubroutineCallN(self)
 
 
 
 
-    def subrutineCallN(self):
+    def subroutineCallN(self):
 
-        localctx = jackGrammarParser.SubrutineCallNContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 38, self.RULE_subrutineCallN)
+        localctx = jackGrammarParser.SubroutineCallNContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 38, self.RULE_subroutineCallN)
         try:
             self.state = 236
             self._errHandler.sync(self)
@@ -1539,7 +1539,7 @@ class jackGrammarParser ( Parser ):
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 221
-                self.subrutineNameN()
+                self.subroutineNameN()
                 self.state = 222
                 self.match(jackGrammarParser.T__14)
                 self.state = 223
@@ -1567,7 +1567,7 @@ class jackGrammarParser ( Parser ):
                 self.state = 230
                 self.match(jackGrammarParser.T__26)
                 self.state = 231
-                self.subrutineNameN()
+                self.subroutineNameN()
                 self.state = 232
                 self.match(jackGrammarParser.T__14)
                 self.state = 233

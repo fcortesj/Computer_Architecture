@@ -5,7 +5,7 @@ from jackGrammarLexer import jackGrammarLexer
 from jackGrammarParser import jackGrammarParser
 from jackGrammarListener import jackGrammarListener
 from jackListener import jackListener
-
+from jackErrorHandler import ErrorHandler
 
 
 def main(argv):
@@ -60,7 +60,17 @@ def translateFile(filepath):
     lexer = jackGrammarLexer(input)
     stream = CommonTokenStream(lexer)
     parser = jackGrammarParser(stream)
-    tree = parser.classN()
+
+    #Remove Error Listener to add ours
+    parser.removeErrorListeners()
+    parser.addErrorListener(ErrorHandler())
+
+    try:
+        tree = parser.classN()
+    except  Exception as syntaE:
+        print(syntaE)
+        sys.exit(-1)
+        
     listener = jackListener(output, parser)
     ParseTreeWalker.DEFAULT.walk(listener, tree)
 

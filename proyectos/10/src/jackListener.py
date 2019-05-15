@@ -13,6 +13,7 @@ class jackListener(jackGrammarListener):
 
     keywords = ["class","constructor","function","method","field","static","var","int","char","boolean","void","true","false","null","this","let","do","if","else","while","return"]
     symbol   = ["[","]","{","}","(",")",".",",",";","+","-","*","/","&","|","<",">","=","~"]
+    nonTerminal = ["class","classVarDec","subroutineDec","parameterList","subroutineBody","varDec","statements","whileStatement","ifStatement","returnStatement","letStatement","doStatement","expression","term","expressionList"]
 
 
     def __init__(self, output, parser):
@@ -20,29 +21,28 @@ class jackListener(jackGrammarListener):
         self.output = open(output, 'w')
         self.indent_count = 0
         self.parser = parser
-        # Writes the first line of the xml file
-        self.output.write("{}<tokens>\n".format(self.current_indent()))
-        self.increase_indent()
 
 
     def __del__(self):
         """ Destructor of the class also writes the end of all """
-        self.decrease_indent()
-        self.output.write("{}</tokens>\n".format(self.current_indent()))
         self.output.close()
 
 
     def enterEveryRule(self, ctx):
         """ This method contains all enter rules and write them in the output file (.xml) """
-        self.output.write("{}<{}>\n".format(self.current_indent(), self.parser.ruleNames[ctx.getRuleIndex()][:-1]))
-        self.increase_indent()
+        tag = self.parser.ruleNames[ctx.getRuleIndex()][:-1]
+        if tag in jackListener.nonTerminal:
+            self.output.write("{}<{}>\n".format(self.current_indent(), self.parser.ruleNames[ctx.getRuleIndex()][:-1]))
+            self.increase_indent()
         return super().enterEveryRule(ctx)
 
 
     def exitEveryRule(self, ctx):
         """ This method contains all exit rules and write them in the output file (.xml) """
-        self.decrease_indent()
-        self.output.write("{}</{}>\n".format(self.current_indent(), self.parser.ruleNames[ctx.getRuleIndex()][:-1]))
+        tag = self.parser.ruleNames[ctx.getRuleIndex()][:-1]
+        if tag in jackListener.nonTerminal:
+            self.decrease_indent()
+            self.output.write("{}</{}>\n".format(self.current_indent(), self.parser.ruleNames[ctx.getRuleIndex()][:-1]))
         return super().exitEveryRule(ctx)
 
 
@@ -58,6 +58,10 @@ class jackListener(jackGrammarListener):
                 terminal = "&lt;"
             if terminal == '>':
                 terminal = "&gt;"
+            if terminal == '&':
+                terminal = "&amp;"
+            if terminal == '"':
+                terminal = "&quot;"
             tag = "symbol"
         elif  '"' in terminal:
             terminal = terminal[1:-1]

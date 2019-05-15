@@ -35,12 +35,12 @@ class jackGrammarListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by jackGrammarParser#subrutineDecN.
-    def enterSubrutineDecN(self, ctx:jackGrammarParser.SubrutineDecNContext):
+    # Enter a parse tree produced by jackGrammarParser#subroutineDecN.
+    def enterSubroutineDecN(self, ctx:jackGrammarParser.SubroutineDecNContext):
         pass
 
-    # Exit a parse tree produced by jackGrammarParser#subrutineDecN.
-    def exitSubrutineDecN(self, ctx:jackGrammarParser.SubrutineDecNContext):
+    # Exit a parse tree produced by jackGrammarParser#subroutineDecN.
+    def exitSubroutineDecN(self, ctx:jackGrammarParser.SubroutineDecNContext):
         pass
 
 
@@ -53,12 +53,12 @@ class jackGrammarListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by jackGrammarParser#subrutineBodyN.
-    def enterSubrutineBodyN(self, ctx:jackGrammarParser.SubrutineBodyNContext):
+    # Enter a parse tree produced by jackGrammarParser#subroutineBodyN.
+    def enterSubroutineBodyN(self, ctx:jackGrammarParser.SubroutineBodyNContext):
         pass
 
-    # Exit a parse tree produced by jackGrammarParser#subrutineBodyN.
-    def exitSubrutineBodyN(self, ctx:jackGrammarParser.SubrutineBodyNContext):
+    # Exit a parse tree produced by jackGrammarParser#subroutineBodyN.
+    def exitSubroutineBodyN(self, ctx:jackGrammarParser.SubroutineBodyNContext):
         pass
 
 
@@ -80,12 +80,12 @@ class jackGrammarListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by jackGrammarParser#subrutineNameN.
-    def enterSubrutineNameN(self, ctx:jackGrammarParser.SubrutineNameNContext):
+    # Enter a parse tree produced by jackGrammarParser#subroutineNameN.
+    def enterSubroutineNameN(self, ctx:jackGrammarParser.SubroutineNameNContext):
         pass
 
-    # Exit a parse tree produced by jackGrammarParser#subrutineNameN.
-    def exitSubrutineNameN(self, ctx:jackGrammarParser.SubrutineNameNContext):
+    # Exit a parse tree produced by jackGrammarParser#subroutineNameN.
+    def exitSubroutineNameN(self, ctx:jackGrammarParser.SubroutineNameNContext):
         pass
 
 
@@ -179,12 +179,12 @@ class jackGrammarListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by jackGrammarParser#subrutineCallN.
-    def enterSubrutineCallN(self, ctx:jackGrammarParser.SubrutineCallNContext):
+    # Enter a parse tree produced by jackGrammarParser#subroutineCallN.
+    def enterSubroutineCallN(self, ctx:jackGrammarParser.SubroutineCallNContext):
         pass
 
-    # Exit a parse tree produced by jackGrammarParser#subrutineCallN.
-    def exitSubrutineCallN(self, ctx:jackGrammarParser.SubrutineCallNContext):
+    # Exit a parse tree produced by jackGrammarParser#subroutineCallN.
+    def exitSubroutineCallN(self, ctx:jackGrammarParser.SubroutineCallNContext):
         pass
 
 
