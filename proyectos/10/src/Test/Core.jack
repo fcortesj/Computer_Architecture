@@ -1,7 +1,0 @@
-class Bar {
-   method Fraction foo(int y) {
-        var int x;
-        var String city;
-        if (x < ) {let city = "Paris";}
-   }
-}
