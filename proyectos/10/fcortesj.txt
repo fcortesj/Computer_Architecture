@@ -1,1 +1,1 @@
-python3:JackAnalyzer.py
+python3:jackAnalyzer.py
